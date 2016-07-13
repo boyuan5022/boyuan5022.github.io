@@ -1584,6 +1584,8 @@ pre code {
   overflow-y: scroll;
 }
 .container {
+  margin-top: 70px;
+  padding-top: auto;
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
