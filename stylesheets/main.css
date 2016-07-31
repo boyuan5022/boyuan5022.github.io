@@ -1,9 +1,38 @@
-html, body {
+html body {
   max-width: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
  
 body {
+  background-color:whitesmoke;
   font-family: 'Raleway';
-  background-color: whitesmoke;
+  color:#787878;
+}
+
+#htmlwidget_container {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    position:static !important;
+    height: 700;
+}
+
+#main{
+   position:absolute;
+   overflow-y:scroll;
+   width:100%;
+   top:70px;
+   bottom:0px;
+}
+
+#content{
+background-color:white;
+    border: 1px solid #e7e7e7;
+}
+
+@media (max-width: 439px) {
+#heading{
+display: none;
+}
 }

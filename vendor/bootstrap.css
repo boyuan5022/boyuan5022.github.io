@@ -1103,7 +1103,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #2e9fff;
   text-decoration: none;
 }
 a:focus {
@@ -1584,7 +1584,6 @@ pre code {
   overflow-y: scroll;
 }
 .container {
-  margin-top: 70px;
   padding-top: auto;
   margin-right: auto;
   margin-left: auto;
@@ -4499,7 +4498,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
