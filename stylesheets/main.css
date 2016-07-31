@@ -40,3 +40,9 @@ background-color:white;
 display: none;
 }
 }
+
+footer{
+text-align: center;
+position:static;
+    bottom: 0px;
+}
