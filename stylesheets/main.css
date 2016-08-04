@@ -26,12 +26,12 @@ body {
    position:absolute;
    overflow-y:scroll;
    width:100%;
-   top:65px;
-   margin-top:5px;
+   top:45px;
    bottom:0px;
 }
 
 #content{
+margin-top:35px;
 background-color:white;
     border: 1px solid #e7e7e7;
 }
