@@ -49,4 +49,6 @@ position:static;
 }
 
 p{
-font-family:sans-serif;}
+line-height: 2;
+font-family:sans-serif;
+font-size:medium;}
