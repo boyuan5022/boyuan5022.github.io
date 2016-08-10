@@ -52,3 +52,8 @@ p{
 line-height: 2;
 font-family:sans-serif;
 font-size:medium;}
+
+#title{
+color:blue;
+margin-top:40px;
+}
