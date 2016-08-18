@@ -3991,7 +3991,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
-  psdding-bottom:8px;
   text-decoration: none;
   background-color: transparent;
   border-bottom: 2px solid blue;
@@ -4237,8 +4236,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .container-fluid > .navbar-header,
 .container > .navbar-collapse,
 .container-fluid > .navbar-collapse {
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: 5px;
+  margin-left: 0px;
 }
 @media (min-width: 768px) {
   .container > .navbar-header,

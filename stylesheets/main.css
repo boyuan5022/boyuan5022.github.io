@@ -93,3 +93,8 @@ background-color:transparent;
 #navtitle a {
 color:white;
 }
+
+#mynavbartitle ul li a:hover,
+#mynavbartitle ul li a:focus{
+border-color: white;
+}
