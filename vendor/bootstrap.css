@@ -1103,7 +1103,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #2e9fff;
+  color: blue;
   text-decoration: none;
 }
 a:focus {
@@ -3991,8 +3991,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
+  psdding-bottom:8px;
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: transparent;
+  border-bottom: 2px solid blue;
+  font-weight:bold;
 }
 .nav > li.disabled > a {
   color: #777777;

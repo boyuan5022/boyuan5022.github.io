@@ -22,11 +22,19 @@ body {
     height: 700;
 }
 
-#main{
+.main{
    position:absolute;
    overflow-y:scroll;
    width:100%;
-   top:65px;
+   top:60px;
+   bottom:0px;
+}
+
+#maintitle{
+   position:absolute;
+   overflow-y:scroll;
+   width:100%;
+   top:0px;
    bottom:0px;
 }
 
@@ -36,9 +44,23 @@ background-color:white;
     min-height:90%;
 }
 
-@media (max-width: 439px) {
+#heading
+{
+font-weight: bold;
+}
+#headingsmall
+{
+font-weight: bold;
+display: none;
+}
+
+@media (max-width: 400px) {
 #heading{
 display: none;
+}
+#headingsmall
+{
+display: inline-block;
 }
 }
 
@@ -53,7 +75,21 @@ line-height: 2;
 font-family:sans-serif;
 font-size:medium;}
 
-#title{
-color:blue;
-margin-top:30px;
+.title{
+color:black;
+margin-top:35px;
+font-weight: bold;
+}
+
+.posts{
+  border-top: 2px solid grey;
+}
+
+#navtitle{
+border-color:transparent;
+background-color:transparent;
+}
+
+#navtitle a {
+color:white;
 }
