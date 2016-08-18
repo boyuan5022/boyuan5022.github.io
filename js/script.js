@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$('#maintitle').scroll(function() {
 		var scroll = $(this).scrollTop();
-		var ht = $('#titleimage').outerHeight();
+		var ht = $('#titleimage').outerHeight()-80;
 		if (scroll >ht){
 			$('#navtitle').css({background: 'white',
 							    'border-color': '#CCCCCC'});
