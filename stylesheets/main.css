@@ -6,8 +6,13 @@ body {
   max-width: 100%;
   background-color:whitesmoke;
   font-family: 'Raleway';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  speak: none;
+ font-style: normal;
+ font-weight: normal;
+ font-variant: normal;
+ text-transform: none;
+ line-height: 1;
+-webkit-font-smoothing: antialiased;
   color:#787878;
 }
 
