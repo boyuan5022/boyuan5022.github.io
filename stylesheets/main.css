@@ -6,6 +6,7 @@ html body {
   max-width: 100%;
   background-color:whitesmoke;
   font-family: 'Raleway';
+  -webkit-font-smoothing: subpixel-antialiased;
   color:#787878;
 }
 
