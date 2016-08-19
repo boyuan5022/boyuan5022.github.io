@@ -1,13 +1,9 @@
-html body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
 .nav{
 padding:0px;
 }
  
-body {
+html body {
+  max-width: 100%;
   background-color:whitesmoke;
   font-family: 'Raleway';
   color:#787878;
@@ -22,9 +18,8 @@ body {
     height: 700;
 }
 
-.main{
+#main{
    position:absolute;
-   overflow-y:scroll;
    width:100%;
    top:60px;
    bottom:0px;
@@ -32,7 +27,6 @@ body {
 
 #maintitle{
    position:absolute;
-   overflow-y:scroll;
    width:100%;
    top:0px;
    bottom:0px;
