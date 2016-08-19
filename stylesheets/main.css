@@ -2,11 +2,12 @@
 padding:0px;
 }
  
-html body {
+body {
   max-width: 100%;
   background-color:whitesmoke;
   font-family: 'Raleway';
   -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-text-stroke:1px transparent;
   color:#787878;
 }
 
