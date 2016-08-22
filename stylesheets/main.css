@@ -11,7 +11,7 @@ body {
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
+  line-height: normal;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   color:#787878;
