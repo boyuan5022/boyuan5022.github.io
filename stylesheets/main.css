@@ -35,9 +35,10 @@ body {
 }
 
 #content{
+padding-top:20px;
 background-color:white;
     border: 1px solid #e7e7e7;
-    min-height:90%;
+    min-height:97%;
 }
 
 #heading
