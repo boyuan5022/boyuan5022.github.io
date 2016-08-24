@@ -51,7 +51,7 @@ font-weight: bold;
 display: none;
 }
 
-@media (max-width: 432px) {
+@media (max-width: 450px) {
 #heading{
 display: none;
 }
