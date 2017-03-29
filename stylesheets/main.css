@@ -118,6 +118,12 @@ width:1170px;
 }
 }
 
+@media only screen and (max-width: 500px) {
+#PCA{
+width:100%;
+}
+}
+
 .posts{
   border-top: 2px solid grey;
 }
