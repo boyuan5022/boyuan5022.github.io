@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+<link rel="stylesheet" href="./resources/style.css" type="text/css" media="screen" />
+<script src="./resources/d3-3-5-5.min.js"></script>
+<script type="text/javascript">
+
+var OCC_NAMES = {
+    "1":	{ "name": "Management", color: "#6b8ef7" },
+    "2":	{ "name": "Business Operations", color: "#7b99f8" },
+    "3":	{ "name": "Finance", color: "#abbffb" },
+    "4":	{ "name": "Computer & Mathematical", color: "#05b1b5" },
+    "5":	{ "name": "Architecture & Engineering", color: "#037173" },
+    "6":	{ "name": "Technicians", color: "#07d3d5" },
+    "7":	{ "name": "Life & Social Science", color: "#048183" },
+    "8":	{ "name": "Community & Social Services", color: "#e175e6" },
+    "9":	{ "name": "Legal", color: "#2a5cf4" },
+    "10":	{ "name": "Education & Library", color: "#9f1ea4" },
+    "11":	{ "name": "Entertainment & Media", color: "#d43039" },
+    "12":	{ "name": "Healthcare Practitioners", color: "#38c30b" },
+    "13":	{ "name": "Healthcare Support", color: "#38c40a" },
+    "14":	{ "name": "Protective Service", color: "#751679" },
+    "15":	{ "name": "Food Preparation", color: "#e1b301" },
+    "16":	{ "name": "Cleaning & Maintenance", color: "#bf9801" },
+    "17":	{ "name": "Personal Care & Service", color: "#eaa0ee" },
+    "18":	{ "name": "Sales", color: "#dd5a62" },
+    "19":	{ "name": "Administrative Support", color: "#eca0a5" },
+    "20":	{ "name": "Farming & Forestry", color: "#fedc5b" },
+    "21":	{ "name": "Construction", color: "#cf6001" },
+    "22":	{ "name": "Extraction", color: "#feaf6a" },
+    "23":	{ "name": "Maintenance & Repair", color: "#fe7805" },
+    "24":	{ "name": "Production", color: "#fe9338" },
+    "25":	{ "name": "Transportation", color: "#ffd3ae" },
+    "26":	{ "name": "Military", color: "#8c7001" },
+}
+var occs_in_order = [9,1,12,3,5,2,7,4,6,14,11,18,10,8,21,23,19,22,24,25,26,16,13,15,17,20];
+
+d3.tsv("./resources/income-by-occ.tsv",function(error,data){
+
+	
+var margin = {top: 45, right: 70, bottom: 50, left: 215 },
+    width = 900 - margin.left - margin.right,
+	height = 850 - margin.top - margin.bottom,
+    padding = 15, // separation between nodes, in different categories
+    radius = 4,
+    damper = 0.8;	
+	
+var occ = d3.nest()
+	.key(function(d){return d.year})
+	.entries(data)
+
+var val_names = d3.range(41).map(function(d) { return "inc"+(+d+1).toString()})
+console.log(occ);
+function getDataByYear(year){
+	var norm_data = []
+	occ.forEach(function(o,i){
+		if (o.key == year) {
+			o.values.forEach(function(d,i){
+
+				//Get Total in each row
+				var total = d3.sum(val_names.map(function(vd){
+						return d[vd]
+					})
+				);
+				//Divide individial values by total
+				val_names.map(function(vd,i){
+					var no_of_nodes = Math.round((d[vd]/total) * 50)
+					d3.range(no_of_nodes).map(function(){norm_data.push({'occ':+d.occ,'bucket':i})})
+				})
+			})
+
+		}	
+
+	})
+	console.log(norm_data.length)
+	return norm_data;	
+}
+var norm_data = getDataByYear(1960);
+
+
+
+var occupations = d3.map(data,function(d){return d.occ}).keys()	
+	
+var force = d3.forceSimulation()
+	.alphaDecay(0.1)
+	.velocityDecay(0.9)
+	.force("collision",d3.forceCollide(radius+0.30).strength(2))
+
+var svg = d3.select('body').append("svg")
+			.attr("width",width+ margin.left + margin.right,)
+			.attr("height",height + margin.top + margin.bottom)
+			.append("g")
+			.attr("transform","translate("+margin.left+","+margin.top+")")
+			
+var yScale = d3.scaleBand()
+				.domain(occs_in_order)
+				.range([0,height])
+				.paddingOuter(0.0) 
+				.paddingInner(0.0) 
+
+var xScale = d3.scaleBand()
+	.domain(d3.range(41))
+	.rangeRound([0,width-margin.right])
+	.paddingInner(.2)
+
+var yAxis = d3.axisLeft()
+    .scale(yScale)
+    .tickSize(0)
+    .tickFormat(function(d) {
+		return OCC_NAMES[d]['name']
+    })
+	
+ 
+var xAxis = d3.axisTop()
+			.scale(xScale)
+			.tickValues([0,5,10,15,20,25,30,35,40])
+			.tickSize(5)
+			.tickFormat(function(d){
+				return '$'+(+d*5)+'k';
+			})
+
+var xAxis_bottom = d3.axisBottom()
+			.scale(xScale)
+			.tickValues([0,5,10,15,20,25,30,35,40])
+			.tickSize(0)
+			.tickFormat(function(d){
+				return '$'+(+d*5)+'k';
+			})
+			
+// Call Y Axis
+svg.append("g")
+	.attr("class", "y axis")
+	.call(yAxis)
+	.selectAll(".tick>text")
+	.attr("dy","-0.5em")
+	
+//Call X axis	
+svg.append("g")
+	.attr("transform","translate(0,"+(-padding)+")")
+	.attr("class", "x axis")
+	.call(xAxis)
+	.selectAll(".axis>.tick>line")
+	.attr("x1",0)
+	.attr("y1",0)
+	.attr("x2",0)
+	.attr("y2",height+padding)
+	.attr("class","grid")
+
+svg.append("g")
+	.attr("transform","translate(0,"+(height)+")")
+	.attr("class", "x axis")
+	.call(xAxis_bottom)		
+
+function prepareDataNodes(norm_data){
+	return norm_data.map(function(d){
+	
+		return {
+			occ:d.occ,
+			bucket:d.bucket,
+			x:xScale(d.bucket),
+			y:yScale(d.occ)
+			}
+		})
+}
+var dataNodes = prepareDataNodes(norm_data)
+
+
+	
+var node_circles =	svg.append("g").selectAll('circle').data(dataNodes)
+	.enter();
+
+
+	
+
+function redraw(dataNodes){
+	
+	var node_circles_entered=node_circles.data(dataNodes)
+		.append("circle")
+		.attr("fill",function(d){return OCC_NAMES[d.occ]['color']})
+		.attr("r",radius);
+			
+	function ticked(){
+		   node_circles_entered
+			.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) { return d.y; });
+	};		
+		
+	force.nodes(dataNodes)
+			.on("tick",ticked);
+			
+	node_circles.exit().remove();
+	
+}	
+
+	
+
+redraw(dataNodes );	
+
+setTimeout(function(){redraw(prepareDataNodes(getDataByYear(2014)));},1500);
+
+  
+})
+
+
+</script>
+</body>
