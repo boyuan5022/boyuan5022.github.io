@@ -58,7 +58,7 @@ function getDataByYear(year){
 				);
 				//Divide individial values by total
 				val_names.map(function(vd,i){
-					var no_of_nodes = Math.round((d[vd]/total) * 50)
+					var no_of_nodes = Math.round(d[vd])
 					d3.range(no_of_nodes).map(function(){norm_data.push({'occ':+d.occ,'bucket':i})})
 				})
 			})
