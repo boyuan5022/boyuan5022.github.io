@@ -43,7 +43,7 @@ var occ = d3.nest()
 	.key(function(d){return d.year})
 	.entries(data)
 
-var val_names = d3.range(41).map(function(d) { return "inc"+(+d+1).toString()})
+var val_names = d3.range(101).map(function(d) { return "inc"+(+d+1).toString()})
 console.log(occ);
 function getDataByYear(year){
 	var norm_data = []
