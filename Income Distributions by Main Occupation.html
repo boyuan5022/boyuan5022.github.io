@@ -27,13 +27,13 @@ var OCC_NAMES = {
     "18":	{ "name": "Tyson (Hillshire Brands)", color: "#dd5a62" },
     "19":	{ "name": "Unilever", color: "#eca0a5" },
 }
-var occs_in_order = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+var occs_in_order = [16,6,15,12,7,2,1,18,19,8,4,10,9,13,11,17,3,14,5];
 
 d3.tsv("./resources/income-by-occ.tsv",function(error,data){
 
 	
 var margin = {top: 45, right: 70, bottom: 50, left: 215 },
-    width = 1200 - margin.left - margin.right,
+    width = 900 - margin.left - margin.right,
 	height = 850 - margin.top - margin.bottom,
     padding = 15, // separation between nodes, in different categories
     radius = 4,
