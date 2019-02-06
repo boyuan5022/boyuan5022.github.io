@@ -1,13 +1,27 @@
+@media(max-width: 1230px) {
+.homepic{
+display: none;
+}
+}
+
+@media(max-width: 990px) {
+.pic{
+display: none;
+}
+}
+
+.fade{
+	opacity=1;
+}
+
 .nav{
 padding:0px;
 }
  
 body {
   max-width: 100%;
-  background-color:whitesmoke;
-  font-family: 'Raleway';
+  font-family: 'Roboto';
   -webkit-font-smoothing: antialiased;
-  color:#787878;
 }
 
 #htmlwidget_container {
@@ -42,7 +56,6 @@ position:relative;
 
 #content{
 background-color:white;
-    border: 1px solid #e7e7e7;
     min-height:90%;
 }
 
@@ -102,30 +115,10 @@ color:black;
 font-weight: bold;
 }
 
-#articletitle{
-display: inline-block;
-color:white;
-position:fixed;
-top:20%;
-left: 0;
-right: 0;
-margin:0 auto;
-}
-
-@media (min-width: 1200px){
-#articletitle{
-width:1170px;
-}
-}
-
 @media only screen and (max-width: 500px) {
 #PCA{
 width:100%;
 }
-}
-
-.posts{
-  border-top: 2px solid grey;
 }
 
 #navtitle{
