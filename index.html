@@ -7,7 +7,7 @@
 		
 		<title>Robert Li</title>
 		<link rel="stylesheet" href="vendor/bootstrap.css">
-		<link href='https://fonts.googleapis.com/css?family=Raleway|Lato' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Roboto|Lato' rel='stylesheet' type='text/css'>
 		<!-- favicon -->
 		<link rel="icon" type="image/png" href="Images/favicon.png" sizes="16x16">
 		
@@ -29,371 +29,34 @@
 					<span class="icon-bar"></span> 
 					</button>
 					<h2>
-					<a id="headingsmall" href="#">
-					<img src="Images/favicon.png" alt="Image" style="height:35px; width: 35px;">
-					</a>
-					<a id="heading" href="#">
+					<a id="heading" href="index.html">
 					Robert Li
 					</a>
 					</h2>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbartitle">
-					<ul class="nav navbar-bar nav-justified">
+					<ul class="nav navbar-nav navbar-right">
 						<li><a href="index.html">Home</a></li>
-						<li><a href="archives.html">Archives</a></li>
-						<li><a href="about.html">About me</a></li>
-						<li><a href="resources.html">Resources</a></li>
+						<li><a href="archives.html">Projects</a></li>
+						<li><a href="about.html">Contact</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<article>
-			<div id="maintitle">
-			<div id="imagetitle"><img src="Images/background.png" alt="Image" style="height:100%; min-width: 100%;">
-			<div id="articletitle">
-			<h2 id="movinghead" style="color:white;font-size:50px;font-weight: bold;">Disecting the<br> roles of<br> League of Legends</h2>
-			<address class="author">By <img src="Images/robert.png" alt="profile picture" style="width:55px;height:35px;padding-left:10px;padding-right:10px;"><a rel="Robert Li" href="about.html">Robert Li</a></address> 
-            on <time pubdate datetime="July 27th, 2016" title="July 27th, 2016">3/26/17</time>
-			</div>
-			</div>
-			<div class="container" id="content">
-				<div style="margin-top:20px;margin-bottom:20px;">
-				<p>League of Legends is an online game that is played competitively between 2 teams, where the objective of the game is to destroy the core enemy building, the nexus.
-				In the game, the 5 players on each team is split into 5 roles, the Top laner, Jungler, Mid Laner , Attack Damage Carry, and Support. With the objective of characterizing
-				each role based on data gathered from competitive games, I obtained the raw data from <a href="http://oracleselixir.com/statistics/na/na-lcs-2017-spring-regular-season-player-statistics/">Oracleelixer</a> and set out to analyze it in R.
-			    The Definition of the roles are as such:</p>
-				<table style="margin-top:20px;margin-bottom:20px;">
-					<tr><td>Top Laner-Lanes alone, in fights mostly plays the role of a high health character to absorb enemy attacks</td></tr>
-					<tr><td>Mid Laner- Lanes alone, in fights mostly plays high burst damage dealers</td></tr>
-					<tr><td>Jungler- Does not lane, tried to go around the map and find kills in all lanes</td></tr>
-					<tr><td>Attack Damage Carry- Lanes together with the support, deals consistent damage in teamfights</td></tr>
-					<tr><td>Support- Lanes together with the Attack Damage Carry, plays a supportive roles in healing, vision, shields and such</td></tr>
-				</table>
-				<p>The first step I took is visualizing the data in 2 dimentions to see if there are any trends or clear divides among roles. I imported the dataset called df and
-				converted the data to 2 dimentions represented by the top 2 eigenvectors by using the ir.pca function.
-				</p>
+			<div class="fade" id="maintitle" style="background-color:black">
+				<div style="position:absolute;left:5%;top:50%;transform: translate(0%, -50%);">
+					<h2 style="color:white;font-size:50px;font-weight: bold;">Data Visualization/<br> Analytics</h2>
 				</div>
-				<div style="white-space: pre-line; line-height: 1; background: #FFFFFF; "><span class="sc3">library</span><span class="sc8">(</span><span class="sc9">ggbiplot</span><span class="sc8">)</span><span class="sc0">
-					</span><span class="sc9">ir.pca</span><span class="sc0"> </span><span class="sc8">&lt;-</span><span class="sc0"> </span><span class="sc3">prcomp</span><span class="sc8">(</span><span class="sc3">df</span><span class="sc0">,</span><span class="sc9">center</span><span class="sc0"> </span><span class="sc8">=</span><span class="sc0"> </span><span class="sc9">T</span><span class="sc0">, </span><span class="sc9">scale.</span><span class="sc0"> </span><span class="sc8">=</span><span class="sc0"> </span><span class="sc9">T</span><span class="sc8">)</span><span class="sc0">
-					</span><span class="sc9">g</span><span class="sc0"> </span><span class="sc8">&lt;-</span><span class="sc0"> </span><span class="sc9">ggbiplot</span><span class="sc8">(</span><span class="sc9">ir.pca</span><span class="sc0">, </span><span class="sc9">groups</span><span class="sc8">=</span><span class="sc3">factor</span><span class="sc8">(</span><span class="sc3">df</span><span class="sc8">$</span><span class="sc9">POS</span><span class="sc8">))</span><span class="sc0">
-					</span><span class="sc9">g</span><span class="sc0"> </span><span class="sc8">&lt;-</span><span class="sc0"> </span><span class="sc9">g</span><span class="sc0"> </span><span class="sc8">+</span><span class="sc0"> </span><span class="sc9">scale_color_discrete</span><span class="sc8">(</span><span class="sc9">name</span><span class="sc0"> </span><span class="sc8">=</span><span class="sc0"> </span><span class="sc7">''</span><span class="sc8">)</span><span class="sc0">
-					</span><span class="sc9">g</span><span class="sc0"> </span><span class="sc8">&lt;-</span><span class="sc0"> </span><span class="sc9">g</span><span class="sc0"> </span><span class="sc8">+</span><span class="sc0"> </span><span class="sc9">theme</span><span class="sc8">(</span><span class="sc9">legend.direction</span><span class="sc0"> </span><span class="sc8">=</span><span class="sc0"> </span><span class="sc7">'horizontal'</span><span class="sc0">, 
-					</span><span class="sc9">legend.position</span><span class="sc0"> </span><span class="sc8">=</span><span class="sc0"> </span><span class="sc7">'top'</span><span class="sc8">)</span><span class="sc0">
-					</span><span class="sc3">print</span><span class="sc8">(</span><span class="sc9">g</span><span class="sc8">)</span>
+				<div style="position:absolute;top:50%;right:20%;transform: translate(0%, -50%);">
+					<img class="homepic" src="Images/approxsun.gif">
 				</div>
-				<div><img id="PCA" src="Images/pca plot.PNG" alt="Image" style="margin:auto;display:block;"></div>
-				<div style="margin-top:20px;margin-bottom:20px;">
-				<p>The categories seem pretty clear cut in this case with the exception of ADC and Middle.
-				To observe the differences on a factor level, R was used to get the mean of each group as well as the variance. The data was normalized to
-				make differences more apparent.</p>
+				<div style="position:absolute;bottom:5%; left:50%; transform: translate(-50%, 0%);">
+					<button type="button" class="btn btn-default" style="background-color: rgba(100, 100, 100, 0);color:white;font-size:24px;" onclick="window.location.href = 'archives.html';">Works</button>
 				</div>
-				<div style="white-space: pre-line; line-height: 1; background: #FFFFFF; "><span class="sc9">scaleddf</span><span class="sc8">&lt;-</span><span class="sc3">scale</span><span class="sc8">(</span><span class="sc3">df</span><span class="sc8">[</span><span class="sc5">2</span><span class="sc8">:</span><span class="sc5">20</span><span class="sc8">]</span><span class="sc0">,</span><span class="sc9">center</span><span class="sc8">=</span><span class="sc2">TRUE</span><span class="sc0">,</span><span class="sc3">scale</span><span class="sc8">=</span><span class="sc2">TRUE</span><span class="sc8">)</span><span class="sc0">
-					</span><span class="sc3">aggregate</span><span class="sc8">(</span><span class="sc9">scaleddf</span><span class="sc0">,</span><span class="sc3">list</span><span class="sc8">(</span><span class="sc3">df</span><span class="sc8">$</span><span class="sc9">POS</span><span class="sc8">)</span><span class="sc0">,</span><span class="sc3">mean</span><span class="sc8">)</span><span class="sc0">
-					</span><span class="sc3">aggregate</span><span class="sc8">(</span><span class="sc9">scaleddf</span><span class="sc0">,</span><span class="sc3">list</span><span class="sc8">(</span><span class="sc3">df</span><span class="sc8">$</span><span class="sc9">POS</span><span class="sc8">)</span><span class="sc0">,</span><span class="sc3">var</span><span class="sc8">)</span>
+				<div style="position:absolute;bottom:0%; right:0%;">
+					<p style="font-size:12px;color:white;">Animated Sphere Created by Etienne Jacob</p>
 				</div>
-				<div style="margin-left:6em; overflow-x:scroll; overflow-y:visible; padding:0;">
-				<table>
-					<tr>
-						<th class="headcol">Group.1</td>
-						<td>GP</td>
-						<td>W%</td>
-						<td>K</td>
-						<td>D</td>
-						<td>A</td>
-						<td>KDA</td>
-						<td>KP</td>
-						<td>DTH%</td>
-						<td>FB%</td>
-						<td>GD10</td>
-						<td>XPD10</td>
-						<td>CSD10</td>
-						<td>CSPM</td>
-						<td>CS%P15</td>
-						<td>DPM</td>
-						<td>DMG%</td>
-						<td>EGPM</td>
-						<td>GOLD%</td>
-						<td>WPM</td>
-					</tr>
-					<tr>
-						<th class="headcol">ADC</td>
-						<td>0.12898667</td>
-						<td>-0.006506115</td>
-						<td>0.3530065</td>
-						<td>-0.26849125</td>
-						<td> -0.034591318</td>
-						<td>0.44080443</td>
-						<td>0.17866615</td>
-						<td>-1.03798850</td>
-						<td>-0.4467165</td>
-						<td>0.10539377</td>
-						<td>0.046449589</td>
-						<td>0.01257562</td>
-						<td>0.8222544</td>
-						<td>0.8679205</td>
-						<td>0.9253530</td>
-						<td>0.9873295</td>
-						<td>0.7298810</td>
-						<td>0.8089811</td>
-						<td>-0.83355983</td>
-					</tr>
-					<tr>
-						<th class="headcol">Jungle</td>
-						<td>-0.14759051</td>
-						<td>0.044362577</td>
-						<td>0.1975315</td>
-						<td>0.04670328</td>
-						<td>-0.208684245</td>
-						<td>-0.10759838</td>
-						<td>0.2898386</td>
-						<td>0.45422228</td>
-						<td>0.7926983</td>
-						<td>-0.03659455</td>
-						<td>0.001785091</td>
-						<td>0.16616761</td>
-						<td>-0.4305381</td>
-						<td>-0.4597393</td>
-						<td>-0.5916112</td>
-						<td>-0.6469838</td>
-						<td>-0.1007505</td>
-						<td>-0.1519542</td>
-						<td>0.02563244</td>
-					</tr>
-					<tr>
-						<th class="headcol">Middle</td>
-						<td>0.02841315</td>
-						<td>-0.134381561</td>
-						<td>0.636509</td>
-						<td>0.01170876</td>
-						<td>-0.284712023</td>
-						<td>-0.07167221</td>
-						<td>0.09131239</td>
-						<td>-0.08356931</td>
-						<td>-0.1193863</td>
-						<td>-0.06963769</td>
-						<td>-0.017008167</td>
-						<td>-0.115892</td>
-						<td>0.8175127</td>
-						<td>0.8042536</td>
-						<td>0.8967488</td>
-						<td>0.9424028</td>
-						<td>0.7806622</td>
-						<td>0.8844047</td>
-						<td>-0.57516838</td>
-					</tr>
-					<tr>
-						<th class="headcol">Support</td>
-						<td>-0.01852116</td>
-						<td>0.022458731</td>
-						<td>-0.9565039</td>
-						<td>0.14068043</td>
-						<td>0.529766262</td>
-						<td>-0.11555054</td>
-						<td>0.10605041</td>
-						<td>0.43827499</td>
-						<td>-0.1951429</td>
-						<td>0.05846507</td>
-						<td>-0.007090233</td>
-						<td>0.03264855</td>
-						<td>-1.7136141</td>
-						<td>-1.6866036</td>
-						<td>-1.3439898</td>
-						<td>-1.4000067</td>
-						<td>-1.6653416</td>
-						<td>-1.7830931</td>
-						<td>1.82008252</td>
-					</tr>
-					<tr>
-						<th class="headcol">Top</td>
-						<td>0.02841315</td>
-						<td>0.069227247</td>
-						<td>-0.2107161</td>
-						<td>0.04975159</td>
-						<td>0.003580145</td>
-						<td>-0.11353892</td>
-						<td>-0.68650556</td>
-						<td>0.13062552</td>
-						<td>-0.1193863</td>
-						<td>-0.05083796</td>
-						<td>-0.022026074</td>
-						<td>-0.11077632</td>
-						<td>0.6198458</td>
-						<td>0.5937461</td>
-						<td>0.2398888</td>
-						<td>0.2527719</td>
-						<td>0.3357331</td>
-						<td>0.3327723</td>
-						<td>-0.51857156</td>
-					</tr>
-				</table>
-				</div>
-				<div style="margin-top:20px;margin-bottom:20px;">
-				<p>Looking at the means of the roles by factor, it becomes apparent that the support role is is clearly different in
-				every single factor; whether it's damage(DPM,DMG%), gold(GOLD%), or kills and deaths(KDS,K,A). This is to be expected as the support is
-				a role that performs supportive tasks like placing wards, and giving kills and gold to other teammates. The nature of the role is so
-				unique that someone new watching the game would be able to tell.</p>
-				<p>Another unique observation is that the Attack Damage carry(ADC) role has a much lower amount of deaths than others. As victory or defeat
-				hinges on keeping the player in this role alive, teams will do everything to keep their ADC safe. ADCs and Middle Laners are the most similar
-				roles as seen in the means and graph.</p>
-				<p>Lastly, Junglers are the kings of the First Blood Percentage statistic(FB%), or how often they get the first kill of the game. As a role 
-				that is expected to move around in the game and get	kills around the map, this stat can be explained by junglers constantly looking for kills
-				while laners(every other role) have a lot harder time getting a kill during the laning phase. An interesting corollary to this is that individual junglers
-				on average played the the least amount of competitive games at 19.7. Perhaps the impact of junglers means many team want to find the
-				best player possible.</p>
-				</div>
-				<div style="margin-left:6em; overflow-x:scroll; overflow-y:visible; padding:0;">
-				<table>
-					<tr>
-						<th class="headcol">Group.1</th>
-						<td>GP</td>
-						<td>W%</td>
-						<td>K</td>
-						<td>D</td>
-						<td>A</td>
-						<td>KDA</td>
-						<td>KP</td>
-						<td>DTH%</td>
-						<td>FB%</td>
-						<td>GD10</td>
-						<td>XPD10</td>
-						<td>CSD10</td>
-						<td>CSPM</td>
-						<td>CS%P15</td>
-						<td>DPM</td>
-						<td>DMG%</td>
-						<td>EGPM</td>
-						<td>GOLD%</td>
-						<td>WPM</td>
-					</tr>
-					<tr>
-						<th class="headcol">ADC</th>
-						<td>0.8935642</td>
-						<td>0.8682256</td>
-						<td>0.73748768</td>
-						<td>0.7045157</td>
-						<td>0.6720001</td>
-						<td>0.9419344</td>
-						<td>0.7307841</td>
-						<td>0.4630166</td>
-						<td>0.6750432</td>
-						<td>0.8940697</td>
-						<td>0.6230192</td>
-						<td>1.2126786</td>
-						<td>0.038668754</td>
-						<td>0.049219922</td>
-						<td>0.2304492</td>
-						<td>0.10158321</td>
-						<td>0.19505666</td>
-						<td>0.06751711</td>
-						<td>0.02178115</td>
-					</tr>
-					<tr>
-						<th class="headcol">Jungle</th>
-						<td>1.0582018</td>
-						<td>1.1609431</td>
-						<td>1.02559771</td>
-						<td>1.2394271</td>
-						<td>0.7425387</td>
-						<td>0.6947369</td>
-						<td>0.5918384</td>
-						<td>0.493798</td>
-						<td>1.1098686</td>
-						<td>1.5188636</td>
-						<td>1.7290631</td>
-						<td>1.6782124</td>
-						<td>0.031463909</td>
-						<td>0.040615759</td>
-						<td>0.1961923</td>
-						<td>0.13609767</td>
-						<td>0.20846766</td>
-						<td>0.05102686</td>
-						<td>0.17654145</td>
-					</tr>
-					<tr>
-						<th class="headcol">Middle</th>
-						<td>1.0487121</td>
-						<td>1.0248737</td>
-						<td>1.26618724</td>
-						<td>0.9660085</td>
-						<td>0.6689356</td>
-						<td>0.6078158</td>
-						<td>1.0542016</td>
-						<td>0.6858939</td>
-						<td>0.8768288</td>
-						<td>1.3009036</td>
-						<td>1.0460236</td>
-						<td>1.0695701</td>
-						<td>0.040995682</td>
-						<td>0.047846471</td>
-						<td>0.3734653</td>
-						<td>0.19515147</td>
-						<td>0.31926514</td>
-						<td>0.05708538</td>
-						<td>0.03722117</td>
-					</tr>
-					<tr>
-						<th class="headcol">Support</th>
-						<td>1.0691753</td>
-						<td>0.9358058</td>
-						<td>0.07779179</td>
-						<td>1.1874217</td>
-						<td>1.7210541</td>
-						<td>1.4445586</td>
-						<td>0.972354</td>
-						<td>0.8870883</td>
-						<td>0.8582948</td>
-						<td>0.4105308</td>
-						<td>0.9261542</td>
-						<td>0.2270309</td>
-						<td>0.002944827</td>
-						<td>0.004091182</td>
-						<td>0.1027956</td>
-						<td>0.09241304</td>
-						<td>0.07096425</td>
-						<td>0.02231085</td>
-						<td>0.13528102</td>
-					</tr>
-					<tr>
-						<th class="headcol">Top</th>
-						<td>0.9688188</td>
-						<td>1.0574192</td>
-						<td>0.41009046</td>
-						<td>0.8590453</td>
-						<td>0.8539734</td>
-						<td>1.1842013</td>
-						<td>1.1424293</td>
-						<td>1.0796675</td>
-						<td>0.5855759</td>
-						<td>0.9056424</td>
-						<td>0.6821707</td>
-						<td>0.8119174</td>
-						<td>0.030157977</td>
-						<td>0.048189191</td>
-						<td>0.2508314</td>
-						<td>0.18271147</td>
-						<td>0.18409801</td>
-						<td>0.05674407</td>
-						<td>0.01355178</td>
-					</tr>
-				</table>
-				</div>
-				<div style="margin-top:20px;margin-bottom:20px;">
-				<p>Looking at the variances, the most notable thing is that the Creep Score(CS) of support players is incredibly consistent.
-				Creeps are monsters in the game that players kill for gold, in the case of supports, they are actively trying to gift
-				gold to their teammates. Low creep score is also a factors that is independent of all other factors, the enemy team
-				does not have anyway to stop a player from not killing creeps.</p>
-				<p>Modeling this dataset for predictive purposes proved to be difficult as there is only 217 observations divided into the
-				sampling and testing set, with a larger dataset, a well performing model can be made that would be useful for websites that
-				want to display the roles of players but don't have access to that statistic. The challenges such as model would be adjusting when
-				new balance patches released for the game and adjusting for the skill level of players.</p>
-				<p>In conclusion, the results of the differences in roles are what players of the game would expect, like many team based competitions,
-				League of Legends is a game where highly specialized roles proved to be the most efficient way of winning, and the huge differences in 
-				roles is reflected the data.</p>
-				</div>
-			</div>
-			<footer>
- <small>© Copyright 2017 By Robert Li, All Rights Reserved</small>
-</footer>
 			</div>
 		</article>
 	</body>
