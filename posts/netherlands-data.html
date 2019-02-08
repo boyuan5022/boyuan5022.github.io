@@ -52,8 +52,7 @@
 			<div id="main">
 			<div class="container" id="content">
 				<h2 class="title">A Network Visualization of Netherlands Data</h2>
-				<address class="author">By <img src="../Images/robert.png" alt="profile picture" style="width:55px;height:35px;padding-left:10px;padding-right:10px;"><a rel="Robert Li" href="../about.html">Robert Li</a></address> 
-				on <time pubdate datetime="July 27th, 2016" title="July 27th, 2016">7/26/16</time>
+				<address class="author">By <img src="../Images/robert.png" alt="profile picture" style="width:55px;height:35px;padding-left:10px;padding-right:10px;"><div style="display: inline-block;position:absolute; bottonm:0;"><a rel="Robert Li" href="../about.html">Robert Li</a><br><time pubdate datetime="July 27th, 2016" title="July 27th, 2016" style="color:grey;">7/26/16</time></div></address>
 				<div style="margin-top:20px;margin-bottom:20px;">
 				<p>While browsing through Bloomberg graphics I've noticed that the visualizations that always seemed to impressed me the most were dynamic network graphs.
 				The extra dimention of user input allowed for the graphs to contain so much information without seeming overwelming and the end result of my reseach is 
@@ -69,8 +68,8 @@
 				<div style="margin-top:20px;margin-bottom:20px;">
 				<p> The purpose of the graphic is to provide a macro view on the netherlands market as insight into specific companies by clicking on them.
 				Of course, the graph is made possible by an R package called <a href="https://christophergandrud.github.io/networkD3/">networkD3</a> which converts r graphs into graphs in network d3. The advantage of this is that the properties of network graphs in R can be viewed so things
-				like sizes, labels, and edges can all be viewed in the R easily. Most importantly, it automizes the hundreds of lines required to contruct a graph in d3 in a single function. And so, with the powerful tool that is NetworkD3,
-				i set off to create a force graph. The end result is a neat visualizaiton, but it was not very useful without infoboxes. Luckily, networkD3 also has a parameter called <italic>MyClickScript</italic> which executes a script when a node is clicked,
+				like sizes, labels, and edges can all be viewed in the R easily. Most importantly, it automizes the hundreds of lines required to contruct a graph in d3 in a single function. <br>And so, with the powerful tool that is NetworkD3,
+				i set off to create a force graph. The end result is a neat visualizaiton, but it was not very useful without infoboxes. <br>Luckily, networkD3 also has a parameter called <italic>MyClickScript</italic> which executes a script when a node is clicked,
 				this allows for the use of javascript to create html elements like infoboxes. To some this might seem like an inefficient solution for something that can be done in a cleaner fashion by difrectly coding in html, but the drawbacks of it a offset by the simplicity of the networkD3 function
 				and the ease of creating graphs in R.
 				</p>
